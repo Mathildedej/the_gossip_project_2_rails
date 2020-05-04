@@ -1,24 +1,19 @@
-# README
+# THE GOSSIP PROJECT WITH RAILS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App to get the gossips of THP using ruby on rails
+This is done with Ruby 2.5.1 and Rails 5.2.4.2
 
-Things you may want to cover:
+## Get Started
 
-* Ruby version
+* Please be sure to clone the project on your desktop.
+* Then do a bundle install to get what you need for this app.
+* Finally do a 
+``` 
+rails db:migrate
+rails db:migrate:status         #to make sure everything is up
+rails db:seed
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+and play with the db !
+```
+Thank you
+Mathilde dej

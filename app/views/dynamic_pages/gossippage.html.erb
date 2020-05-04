@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+  <body>
+    <h1>Bienvenue sur la page du potin numéro : <%= params['num'].to_i %> !</h1>
+    <% gossip = Gossip.find(params['num'].to_i) %>
+    <p>Titre du gossip : <%= gossip.title %> </p>
+    <p>Contenu : <%= gossip.content %> </p>
+    <p>Crée le : <%= gossip.created_at %> </p>
+
+    <% id_user = User.find_by(id:gossip.user_id).id %>
+    <a href="/author/<%= (id_user) %>" class="btn btn-primary"><%=User.find_by(id:gossip.user_id).first_name %></a>
+
+  </body>
+</html>

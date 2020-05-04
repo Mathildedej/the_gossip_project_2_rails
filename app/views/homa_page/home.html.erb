@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+  <body>
+    <h1>BIENVENUE!</h1>
+    <p> Voici la liste actuelle des potins : </p>
+    <div class="container-potin">
+      <% current_id = Gossip.first.id %>
+      <% id_potin = 1%>
+      <% while current_id <= Gossip.last.id 
+        gossip = Gossip.find_by(id:current_id) %>
+        <div class="card mt-2">
+          <h6 class="card-header"><%= User.find_by(id:gossip.user_id).first_name %></h6>
+          <div class="card-body">
+            <h6 class="card-title"><%= gossip.content %></h6>
+            <a href="/gossip/<%= (current_id) %>" class="btn btn-primary">Gossip n° <%=id_potin%></a>
+          </div>
+        </div>
+        <% current_id += 1%>
+        <% id_potin += 1%>
+      <% end %>
+    </div>
+  </body>
+</html>
+

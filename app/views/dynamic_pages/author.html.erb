@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+  <body>
+    <% user = User.find(params['number'].to_i) %>
+    <h1>Page auteur : <%= user.first_name%> :)</h1>
+    <p>Auteur : <%= user.first_name%>, <%= user.last_name%> </p>
+    <p>Email : <%= user.email%> </p>
+    <p>Agé de : <%= user.age %> </p>
+  </body>
+</html>

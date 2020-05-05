@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+  <body>
+    <h1>Va y crée ton potin :</h1>
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
+      <label for="fname">Titre: </label>
+      <input type="text" name="gossip_title">
+      <br /> <br />
+      <label for="fname">Contenu: </label>
+      <input type="text" name="gossip_content">
+      <br /> <br />
+      <%= submit_tag "Enregistrer Potin" %>
+    <% end %>
+  </body>
+</html>

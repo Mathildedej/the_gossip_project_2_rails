@@ -12,14 +12,18 @@ City.destroy_all
 Gossip.destroy_all
 JoinTableTagGossip.destroy_all
 
+
 10.times do
   c = City.create!(name: Faker::Address.city)
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.first_name, city: c, email: Faker::Internet.email, age: Faker::Number.between(from: 1, to: 100))
   Tag.create!(title: Faker::Lorem.word)
 end
 
+c2 = City.create!(name: Faker::Address.city)
+User.create!(first_name: "anonymous", city: c2, email: Faker::Internet.email, age: Faker::Number.between(from: 1, to: 100))
+
 20.times do
-  Gossip.create!(title: Faker::Lorem.sentence,content: Faker::Lorem.sentence ,user: User.find(rand(User.first.id..User.last.id)))
+  Gossip.create!(title: Faker::Alphanumeric.alpha(number: 10),content: Faker::Lorem.sentence ,user: User.find(rand(User.first.id..User.last.id)))
 end
 
 40.times do 

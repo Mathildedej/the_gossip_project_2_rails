@@ -3,7 +3,7 @@
     <title>The Gossip Project</title>
   </head>
   <body>
-    <h1>Bienvenue sur la page du potin numéro : <%= params['num'].to_i %> !</h1>
+    <h1>Bienvenue sur la page du potin !</h1>
     <% gossip = Gossip.find(params['num'].to_i) %>
     <p>Titre du gossip : <%= gossip.title %> </p>
     <p>Contenu : <%= gossip.content %> </p>

@@ -3,14 +3,20 @@
     <title>The Gossip Project</title>
   </head>
   <body>
-    <h1>Bienvenue sur la page du potin !</h1>
-    <% gossip = Gossip.find(params['num'].to_i) %>
-    <p>Titre du gossip : <%= gossip.title %> </p>
-    <p>Contenu : <%= gossip.content %> </p>
-    <p>Crée le : <%= gossip.created_at %> </p>
-
-    <% id_user = User.find_by(id:gossip.user_id).id %>
-    <a href="/author/<%= (id_user) %>" class="btn btn-primary"><%=User.find_by(id:gossip.user_id).first_name %></a>
-
+    <div class = "text-center"><h1>Bienvenue sur la page du potin !</h1></div>
+    <div class="container-potin row justify-content-center">
+      <div class="card mt-2 text-center" style="width: 20rem;">
+        <% gossip = Gossip.find(params['num'].to_i) %>
+        <h6 class="card-header">Titre:     <%= gossip.title %> </h6>
+        <div class="card-body">
+          <div class="text-left"><h7>Contenu : <%= gossip.content %></h7></div>
+          <br>
+          <div class="text-left"><h7>Crée le : <%= gossip.created_at %></h7></div>
+          <% id_user = User.find_by(id:gossip.user_id).id %>
+          <br>
+          <a href="/author/<%= (id_user) %>" class="btn btn-primary"><%=User.find_by(id:gossip.user_id).first_name %></a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

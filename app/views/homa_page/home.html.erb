@@ -4,7 +4,11 @@
   </head>
   <body>
     <h1>BIENVENUE!</h1>
-    <p> Voici la liste actuelle des potins : </p>
+    <br /> 
+    <h4> Tu peux choisir de créer un nouveau potin : </h4>
+    <a href="/gossips/new" class="btn btn-dark">Nouveau Potin !</a>
+    <br /> <br />
+    <h4> Voici la liste actuelle des potins : </h4>
     <div class="container-potin">
       <% current_id = Gossip.first.id %>
       <% id_potin = 1%>

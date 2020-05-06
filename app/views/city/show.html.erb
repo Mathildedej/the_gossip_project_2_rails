@@ -3,17 +3,12 @@
     <title>The Gossip Project</title>
   </head>
   <body>
-    <% city = City.find(params[:id].to_i) %>
-
-    <%= users = User.where(city_id: city.id) %>
-
-    <div class = "text-center"><h4> Voici la liste actuelle des potins écrits par les auteurs de la ville <%= city.name%>: </h4></div>
-
+    <br />
+    <div class = "text-center"><h4> Voici la liste actuelle des potins écrits par les auteurs de la ville <%= @city.name%>: </h4></div>
+    <br />
     <div class="container-potin row justify-content-center">
-    <% current_id = Gossip.first.id %>
     <% id_potin = 1%>
-    <% while current_id <= Gossip.last.id 
-      gossip = Gossip.find_by(id:current_id) %>
+    <% @gossips.each do |gossip| %>
       <div class="card mt-2 text-center" style="width: 20rem;">
         <h6 class="card-header"><%= User.find_by(id:gossip.user_id).first_name %></h6>
         <div class="card-body">
@@ -21,11 +16,9 @@
           <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Gossip n° <%=id_potin%></a>
         </div>
       </div>
-      <% current_id += 1%>
       <% id_potin += 1%>
     <% end %>
   </div>
-
 
 
   </body>

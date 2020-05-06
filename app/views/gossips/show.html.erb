@@ -20,5 +20,9 @@
         </div>
       </div>
     </div>
+    <br>
+    <div class = "text-center"><a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-dark">Editer ce potin</a></div>
+    <br />
+    <div class = "text-center"><a href="<%= gossip_path(gossip.id) %>" class="btn btn-danger" data-confirm="Etes vous sur de vouloir supprimer ce potin?" data-method='DELETE'>Détruire à jamais ce potin</a></div>
   </body>
 </html>

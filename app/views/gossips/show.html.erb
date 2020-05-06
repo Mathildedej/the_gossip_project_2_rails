@@ -5,16 +5,18 @@
   <body>
     <div class = "text-center"><h1>Bienvenue sur la page du potin !</h1></div>
     <div class="container-potin row justify-content-center">
-      <div class="card mt-2 text-center" style="width: 20rem;">
-        <% gossip = Gossip.find(params['num'].to_i) %>
+      <div class="card mt-2 text-center" style="width: 30rem;">
+        <% gossip = Gossip.find(params[:id].to_i) %>
         <h6 class="card-header">Titre:     <%= gossip.title %> </h6>
         <div class="card-body">
           <div class="text-left"><h7>Contenu : <%= gossip.content %></h7></div>
           <br>
           <div class="text-left"><h7>Crée le : <%= gossip.created_at %></h7></div>
           <% id_user = User.find_by(id:gossip.user_id).id %>
+          <% id_city = User.find_by(id:gossip.user_id).city_id %>
           <br>
-          <a href="/author/<%= (id_user) %>" class="btn btn-primary"><%=User.find_by(id:gossip.user_id).first_name %></a>
+          <a href="<%= city_path(id_city) %>" class="btn btn-primary">Ville : <%= City.find_by(id: id_city).name %></a>
+          <a href="<%= author_path(id_user) %>" class="btn btn-primary"> Auteur : <%=User.find_by(id:gossip.user_id).first_name %></a>
         </div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+  <body>
+    <% user = User.find(params[:id].to_i) %>
+    <div class = "text-center"><h1>Page auteur : <%= user.first_name%> :)</h1></div>
+    <div class="card-header">
+      <p>Auteur : <%= user.first_name%>, <%= user.last_name%> </p>
+      <p>Email : <%= user.email%> </p>
+      <p>Agé de : <%= user.age %> </p>
+      <% id_city = user.city_id %>
+      <a href="<%= city_path(id_city) %>" class="btn btn-primary">Ville : <%= City.find_by(id: id_city).name %></a>
+    </div>
+  </body>
+</html>

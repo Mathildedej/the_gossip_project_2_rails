@@ -7,13 +7,14 @@ class GossipsController < ApplicationController
   end
 
   def show
+    @gossip = Gossip.find(params[:id])
+    @comments = Comment.all.where(gossip_id: params[:id]).order("created_at DESC")
+    @comment = Comment.new(gossip: @gossip, user: User.find(@gossip.user.id), content: "")
   end
 
   def create
     @gossip = Gossip.new(title: params['gossip_title'], content: params['gossip_content'], user: User.find_by(first_name: 'anonymous')) # avec xxx qui sont les données obtenues à partir du formulaire
     if @gossip.save # essaie de sauvegarder en base @gossip
-      id_gossip = Gossip.last.id
-      #redirect_to "/gossips/#{id_gossip}", notice: "Yes ton potin à bien été crée !" # si ça marche, il redirige vers la page d'index du site
       flash[:success] =  "Yes ton potin à bien été crée !"
       redirect_to action: "index"
     else

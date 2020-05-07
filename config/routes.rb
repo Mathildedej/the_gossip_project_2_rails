@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :gossips # routes for gossips
   resources :author, only: [:show]
   resources :city, only: [:show]
-
+  resources :comment
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

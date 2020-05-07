@@ -24,5 +24,38 @@
     <div class = "text-center"><a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-dark">Editer ce potin</a></div>
     <br />
     <div class = "text-center"><a href="<%= gossip_path(gossip.id) %>" class="btn btn-danger" data-confirm="Etes vous sur de vouloir supprimer ce potin?" data-method='DELETE'>Détruire à jamais ce potin</a></div>
-  </body>
+    <br /> <br />
+
+
+    <!-- Add a comment -->
+    <div class = "text-center"><h2>Commentaires : </h2></div>
+    <div class="container-potin row justify-content-center ">
+      <div class="card mt-2 text-center" style="width: 30rem;">
+        <div class="card-body">
+          <%= form_tag comment_index_path(gossip: @gossip), method: "post" do %>
+            <label for="fname">Nouveau commentaire: </label>
+            <input type="text" name="content">
+            <br /> 
+            <%= submit_tag "Sauvegarder commentaire" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- List Comments -->
+    <div class="container-comment row justify-content-center">
+      <% id_potin = 1%>
+      <% @comments.each do |comment| %>
+        <div class="card mt-2 text-center" style="width: 20rem;">
+          <h6 class="card-header"><%= User.find_by(id:comment.user_id).first_name %></h6>
+          <div class="card-body">
+            <h6 class="card-title"><%= comment.content %></h6>
+            <a href="<%= edit_comment_path(comment.id) %>" class="btn btn-dark"></i> Editer</a>
+          </div>
+        </div>
+        <% id_potin += 1%>
+      <% end %>
+    </div>
+
+    </body>
 </html>

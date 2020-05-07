@@ -8,5 +8,11 @@ Rails.application.routes.draw do
   resources :author, only: [:show]
   resources :city, only: [:show]
   resources :comment
+
+  resources :sessions, only: [:new, :create, :destroy, :index]
+  get 'sessions/welcome'
+  get 'authorized', to: 'sessions#page_requires_login'
+
+  resources :users, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

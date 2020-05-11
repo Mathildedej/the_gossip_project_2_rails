@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # home
+  root to: 'gossips#index'
+
   get '/welcome/:first_name', to: 'static_pages#welcome'
   get '/team', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
